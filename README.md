@@ -36,8 +36,6 @@ This project aims to develop a deep learning model capable of accurately identif
 4. [ResNet](https://pytorch.org/hub/pytorch_vision_resnet/)
 5. [EfficientNet](https://pytorch.org/vision/main/models/efficientnet.html)
 
-## Contributors
-- Joao Pereira (joao.pereira197606@gmail.com)
 - Duarte Gonçalves (duarte.dapg@gmail.com)
 
 ## Affiliation
