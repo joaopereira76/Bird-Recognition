@@ -5,3 +5,4 @@ yolov8n.pt
 sam_vit_b_01ec64.pth
 bird_dataset_segmented_1304_pytorch.h5
 bird_dataset_segmented_pytorch.h5
+bird_dataset_segmented_1304_pytorch.zip
