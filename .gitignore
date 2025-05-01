@@ -6,3 +6,14 @@ sam_vit_b_01ec64.pth
 bird_dataset_segmented_1304_pytorch.h5
 bird_dataset_segmented_pytorch.h5
 bird_dataset_segmented_1304_pytorch.zip
+binary_datasets/binary_Carduelis_carduelis.h5
+binary_datasets/binary_Ciconia_ciconia.h5
+binary_datasets/binary_Columba_livia.h5
+binary_datasets/binary_Delichon_urbicum.h5
+binary_datasets/binary_Emberiza_calandra.h5
+binary_datasets/binary_Hirundo_rustica.h5
+binary_datasets/binary_Passer_domesticus.h5
+binary_datasets/binary_Serinus_serinus.h5
+binary_datasets/binary_Streptopelia_decaocto.h5
+binary_datasets/binary_Sturnus_unicolor.h5
+binary_datasets/binary_Turdus_merula.h5
