@@ -89,6 +89,7 @@ With this segmentation, 2 strategies were considered:
 | **Accuracy**       |  0.8760                     |
 | **Macro-AUPRC**    |  0.9393                     |
 
+All results in the report
 
 ---
 
