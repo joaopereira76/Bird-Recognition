@@ -56,7 +56,7 @@ With this segmentation, 2 strategies were considered:
 
 ---
 
-### 🐦 Multiclass Classification Results
+### 🐦 Multiclass Classification Validation Results
 
 | Config             | Value   |
 |--------------------|---------|
@@ -75,20 +75,21 @@ With this segmentation, 2 strategies were considered:
 | **Macro-AUPRC**    | ~0.83   |
 | **Top-3 Accuracy** | ~0.91   |
 
-The multiclass model delivers balanced performance across species. The high top-3 accuracy highlights its effectiveness in suggesting likely candidates for identification, even when the top prediction is uncertain.
+![confsuin_matrix_segmented_1](https://github.com/user-attachments/assets/b53103f3-e985-4986-a086-a07362d1bd2c)
 
-(confusion matrix image)
+
 ---
 
-### 🔁 One-vs-All (Binary) Classifier Results
+
+### 🔁 One-vs-All (Binary) Classifier Validation Results
 
 | Metric             | Average (across 11 models) |
 |--------------------|----------------------------|
-| **Macro F1-score** |                       |
-| **Accuracy**       |                       |
-| **Macro-AUPRC**    |                       |
+| **Macro F1-score** |  0.8759                     |
+| **Accuracy**       |  0.8760                     |
+| **Macro-AUPRC**    |  0.9393                     |
 
-The One-vs-All approach enables per-species evaluation and can be integrated into late-fusion systems or ensemble pipelines.
+All results in the report
 
 ---
 
