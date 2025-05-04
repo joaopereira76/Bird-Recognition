@@ -103,8 +103,6 @@ All results in the report
 - **Max GPU memory usage**: ~2.0 GB (✅ fits within free-tier constraints)
 - **Training time**: ~5 minutes per model (25 epochs)
 
-This setup confirms the project’s reproducibility and efficiency, making it suitable for both research and deployment on accessible hardware.
-
 
 ## References
 1. [Merlin Bird ID](https://merlin.allaboutbirds.org/photo-id/)
