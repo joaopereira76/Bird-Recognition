@@ -49,6 +49,10 @@ The pipeline works as follows:
 
 This method ensures that all birds are treated consistently and that each segment is relevant enough to carry discriminative features, even in the absence of explicit part annotations.
 
+Below it's possible to see the dataset distribution:
+![dataset_segmented](https://github.com/user-attachments/assets/8679a783-b983-4b84-8f5f-8c8c16e34665)
+
+
 With this segmentation, 2 strategies were considered:
 
 1. **Multiclass classification** — a single model trained to classify all species.
