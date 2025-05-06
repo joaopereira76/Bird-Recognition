@@ -1,0 +1,84 @@
+{
+  "config": {
+    "IMG_SIZE": [
+      224,
+      224
+    ],
+    "TEST_SIZE": 0.15,
+    "TRAIN_SIZE": 0.7,
+    "VAL_SIZE": 0.1,
+    "N_SPLITS": 5,
+    "COMPRESSION": "gzip",
+    "COMPRESSION_LEVEL": 9,
+    "AUGMENTATION": {
+      "train": [
+        {
+          "name": "RandomHorizontalFlip",
+          "p": 0.5
+        },
+        {
+          "name": "RandomRotation",
+          "degrees": 20
+        },
+        {
+          "name": "ColorJitter",
+          "brightness": 0.1,
+          "contrast": 0.1,
+          "saturation": 0.1
+        }
+      ]
+    }
+  },
+  "system": {
+    "timestamp": "2025-05-05T23:08:21.156251",
+    "os": "Linux",
+    "os_version": "6.8.0-58-generic",
+    "cpu": "x86_64",
+    "ram_gb": 15.46,
+    "python_version": "3.13.2"
+  },
+  "download": {
+    "Turdus merula": {
+      "iNaturalist": 332,
+      "GBIF": 569,
+      "start_time": "2025-05-06T02:16:32.318216",
+      "end_time": "2025-05-06T02:39:05.283470",
+      "total_downloaded": 901,
+      "time_seconds": 1352.9653248786926
+    }
+  },
+  "cleaning": {
+    "Turdus merula": {
+      "species": "Turdus merula",
+      "total_removed": 0,
+      "remaining_images": 0,
+      "time_seconds": 2.7894973754882812e-05,
+      "timestamp": "2025-05-06T02:39:05.283920"
+    }
+  },
+  "augmentation": {},
+  "dataset_stats": {
+    "total_images": 8971,
+    "species_counts": {
+      "Carduelis carduelis": 719,
+      "Ciconia ciconia": 796,
+      "Columba livia": 776,
+      "Delichon urbicum": 882,
+      "Emberiza calandra": 849,
+      "Hirundo rustica": 897,
+      "Passer domesticus": 855,
+      "Serinus serinus": 842,
+      "Streptopelia decaocto": 781,
+      "Sturnus unicolor": 673,
+      "Turdus merula": 901
+    },
+    "train_samples": 7625,
+    "test_samples": 1346,
+    "output_path": "new_dataset/dataset_20250506_024257.h5",
+    "compression": "gzip",
+    "compression_level": 9,
+    "processing_time_seconds": 518.5256054401398,
+    "timestamp": "20250506_024257"
+  },
+  "processing_times": {}
+}
