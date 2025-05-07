@@ -1,0 +1,448 @@
+{
+    "timestamp": "2025-05-06T15:47:31.053100",
+    "total_combinations": 16,
+    "best_f1": 0.8309168702285618,
+    "best_params": {
+        "model_name": "efficientnet_V2",
+        "learning_rate": 0.0001,
+        "batch_size": 16,
+        "weight_decay": 0.0001,
+        "optimizer": "adamw",
+        "scheduler": true,
+        "dropout_rate": 0.2
+    },
+    "all_results": [
+        {
+            "params": {
+                "model_name": "efficientnet_b0",
+                "learning_rate": 0.0005,
+                "batch_size": 16,
+                "weight_decay": 0.0001,
+                "optimizer": "adamw",
+                "scheduler": true,
+                "dropout_rate": 0
+            },
+            "avg_f1": 0.7439488594163962,
+            "std_f1": 0.012176342723438148,
+            "mean_acc": 0.7403008709422011,
+            "std_acc": 0.018911434540769902,
+            "f1_scores": [
+                0.7495601192156088,
+                0.7270442825427339,
+                0.7552421764908459
+            ],
+            "acc_scores": [
+                0.7505938242280286,
+                0.7137767220902613,
+                0.7565320665083136
+            ],
+            "memory_used_GB": 1.523959296,
+            "time_taken": 718.5590357780457
+        },
+        {
+            "params": {
+                "model_name": "efficientnet_b0",
+                "learning_rate": 0.0005,
+                "batch_size": 16,
+                "weight_decay": 0.0001,
+                "optimizer": "adamw",
+                "scheduler": true,
+                "dropout_rate": 0.2
+            },
+            "avg_f1": 0.7393717542774182,
+            "std_f1": 0.009508436958326108,
+            "mean_acc": 0.7288202692003166,
+            "std_acc": 0.021516513446874438,
+            "f1_scores": [
+                0.7525933364071249,
+                0.7348841411552397,
+                0.7306377852698903
+            ],
+            "acc_scores": [
+                0.7529691211401426,
+                0.7007125890736342,
+                0.7327790973871734
+            ],
+            "memory_used_GB": 1.523959296,
+            "time_taken": 720.8901968002319
+        },
+        {
+            "params": {
+                "model_name": "efficientnet_b0",
+                "learning_rate": 0.0005,
+                "batch_size": 16,
+                "weight_decay": 0,
+                "optimizer": "adamw",
+                "scheduler": true,
+                "dropout_rate": 0
+            },
+            "avg_f1": 0.7414630499173344,
+            "std_f1": 0.012448609701236735,
+            "mean_acc": 0.7387173396674585,
+            "std_acc": 0.013471654415814367,
+            "f1_scores": [
+                0.7464598569857273,
+                0.7535840090430329,
+                0.7243452837232429
+            ],
+            "acc_scores": [
+                0.7494061757719715,
+                0.7470308788598575,
+                0.7197149643705464
+            ],
+            "memory_used_GB": 1.523959296,
+            "time_taken": 719.9405229091644
+        },
+        {
+            "params": {
+                "model_name": "efficientnet_b0",
+                "learning_rate": 0.0005,
+                "batch_size": 16,
+                "weight_decay": 0,
+                "optimizer": "adamw",
+                "scheduler": true,
+                "dropout_rate": 0.2
+            },
+            "avg_f1": 0.7416649879087721,
+            "std_f1": 0.005112132529936797,
+            "mean_acc": 0.7434679334916865,
+            "std_acc": 0.004226871833741625,
+            "f1_scores": [
+                0.7345173831698263,
+                0.7461793530764177,
+                0.7442982274800723
+            ],
+            "acc_scores": [
+                0.7375296912114014,
+                0.7470308788598575,
+                0.7458432304038005
+            ],
+            "memory_used_GB": 1.523959296,
+            "time_taken": 719.9450926780701
+        },
+        {
+            "params": {
+                "model_name": "efficientnet_b0",
+                "learning_rate": 0.0001,
+                "batch_size": 16,
+                "weight_decay": 0.0001,
+                "optimizer": "adamw",
+                "scheduler": true,
+                "dropout_rate": 0
+            },
+            "avg_f1": 0.7843802473495035,
+            "std_f1": 0.006895655916963702,
+            "mean_acc": 0.7822644497228821,
+            "std_acc": 0.008360535266010667,
+            "f1_scores": [
+                0.7769612630957928,
+                0.7935709902706694,
+                0.7826084886820484
+            ],
+            "acc_scores": [
+                0.7731591448931117,
+                0.7933491686460808,
+                0.7802850356294537
+            ],
+            "memory_used_GB": 1.523959296,
+            "time_taken": 722.1607253551483
+        },
+        {
+            "params": {
+                "model_name": "efficientnet_b0",
+                "learning_rate": 0.0001,
+                "batch_size": 16,
+                "weight_decay": 0.0001,
+                "optimizer": "adamw",
+                "scheduler": true,
+                "dropout_rate": 0.2
+            },
+            "avg_f1": 0.7798567601162172,
+            "std_f1": 0.009586256736366885,
+            "mean_acc": 0.7802850356294537,
+            "std_acc": 0.009250452450948505,
+            "f1_scores": [
+                0.7933985446923344,
+                0.7725295134502362,
+                0.7736422222060807
+            ],
+            "acc_scores": [
+                0.7933491686460808,
+                0.7731591448931117,
+                0.7743467933491687
+            ],
+            "memory_used_GB": 1.523959296,
+            "time_taken": 722.1307172775269
+        },
+        {
+            "params": {
+                "model_name": "efficientnet_b0",
+                "learning_rate": 0.0001,
+                "batch_size": 16,
+                "weight_decay": 0,
+                "optimizer": "adamw",
+                "scheduler": true,
+                "dropout_rate": 0
+            },
+            "avg_f1": 0.7825198466036061,
+            "std_f1": 0.005434140233270102,
+            "mean_acc": 0.7814726840855107,
+            "std_acc": 0.003496342385719666,
+            "f1_scores": [
+                0.777669315678667,
+                0.7901073869930748,
+                0.7797828371390764
+            ],
+            "acc_scores": [
+                0.7779097387173397,
+                0.7862232779097388,
+                0.7802850356294537
+            ],
+            "memory_used_GB": 1.523959296,
+            "time_taken": 720.7826228141785
+        },
+        {
+            "params": {
+                "model_name": "efficientnet_b0",
+                "learning_rate": 0.0001,
+                "batch_size": 16,
+                "weight_decay": 0,
+                "optimizer": "adamw",
+                "scheduler": true,
+                "dropout_rate": 0.2
+            },
+            "avg_f1": 0.7868851720481397,
+            "std_f1": 0.005762958673153928,
+            "mean_acc": 0.7874109263657957,
+            "std_acc": 0.006055842652722992,
+            "f1_scores": [
+                0.7948023664041101,
+                0.7846017059545961,
+                0.7812514437857128
+            ],
+            "acc_scores": [
+                0.7957244655581948,
+                0.7850356294536818,
+                0.7814726840855107
+            ],
+            "memory_used_GB": 1.523959296,
+            "time_taken": 720.9707210063934
+        },
+        {
+            "params": {
+                "model_name": "efficientnet_V2",
+                "learning_rate": 0.0005,
+                "batch_size": 16,
+                "weight_decay": 0.0001,
+                "optimizer": "adamw",
+                "scheduler": true,
+                "dropout_rate": 0
+            },
+            "avg_f1": 0.7164454362662874,
+            "std_f1": 0.00805647735085945,
+            "mean_acc": 0.6991290577988916,
+            "std_acc": 0.015765881038590564,
+            "f1_scores": [
+                0.7202837758803492,
+                0.7052359164813112,
+                0.7238166164372021
+            ],
+            "acc_scores": [
+                0.7030878859857482,
+                0.6781472684085511,
+                0.7161520190023754
+            ],
+            "memory_used_GB": 2.772164096,
+            "time_taken": 1566.6848545074463
+        },
+        {
+            "params": {
+                "model_name": "efficientnet_V2",
+                "learning_rate": 0.0005,
+                "batch_size": 16,
+                "weight_decay": 0.0001,
+                "optimizer": "adamw",
+                "scheduler": true,
+                "dropout_rate": 0.2
+            },
+            "avg_f1": 0.7215495727329061,
+            "std_f1": 0.005811212019536982,
+            "mean_acc": 0.7038796516231196,
+            "std_acc": 0.009165349883444338,
+            "f1_scores": [
+                0.7159827786131308,
+                0.7295687486388722,
+                0.7190971909467153
+            ],
+            "acc_scores": [
+                0.7125890736342043,
+                0.7078384798099763,
+                0.6912114014251782
+            ],
+            "memory_used_GB": 2.772164096,
+            "time_taken": 1536.879356622696
+        },
+        {
+            "params": {
+                "model_name": "efficientnet_V2",
+                "learning_rate": 0.0005,
+                "batch_size": 16,
+                "weight_decay": 0,
+                "optimizer": "adamw",
+                "scheduler": true,
+                "dropout_rate": 0
+            },
+            "avg_f1": 0.7175037222072896,
+            "std_f1": 0.005871001643444179,
+            "mean_acc": 0.6931908155186065,
+            "std_acc": 0.02303616235308974,
+            "f1_scores": [
+                0.7233003963029438,
+                0.7094573838465679,
+                0.7197533864723571
+            ],
+            "acc_scores": [
+                0.7256532066508314,
+                0.6745843230403801,
+                0.6793349168646081
+            ],
+            "memory_used_GB": 2.772164096,
+            "time_taken": 1530.2355864048004
+        },
+        {
+            "params": {
+                "model_name": "efficientnet_V2",
+                "learning_rate": 0.0005,
+                "batch_size": 16,
+                "weight_decay": 0,
+                "optimizer": "adamw",
+                "scheduler": true,
+                "dropout_rate": 0.2
+            },
+            "avg_f1": 0.730839634375475,
+            "std_f1": 0.0035457427544560117,
+            "mean_acc": 0.7086302454473475,
+            "std_acc": 0.01708269913728537,
+            "f1_scores": [
+                0.732203277973021,
+                0.7259788420545135,
+                0.7343367830988903
+            ],
+            "acc_scores": [
+                0.6971496437054632,
+                0.6959619952494062,
+                0.7327790973871734
+            ],
+            "memory_used_GB": 2.772164096,
+            "time_taken": 1532.7023532390594
+        },
+        {
+            "params": {
+                "model_name": "efficientnet_V2",
+                "learning_rate": 0.0001,
+                "batch_size": 16,
+                "weight_decay": 0.0001,
+                "optimizer": "adamw",
+                "scheduler": true,
+                "dropout_rate": 0
+            },
+            "avg_f1": 0.8236789162394405,
+            "std_f1": 0.007371796159623914,
+            "mean_acc": 0.8151227236737926,
+            "std_acc": 0.014295700780101174,
+            "f1_scores": [
+                0.8340345897720809,
+                0.8195427546588651,
+                0.8174594042873754
+            ],
+            "acc_scores": [
+                0.834916864608076,
+                0.8016627078384798,
+                0.8087885985748219
+            ],
+            "memory_used_GB": 2.772164096,
+            "time_taken": 1537.5708763599396
+        },
+        {
+            "params": {
+                "model_name": "efficientnet_V2",
+                "learning_rate": 0.0001,
+                "batch_size": 16,
+                "weight_decay": 0.0001,
+                "optimizer": "adamw",
+                "scheduler": true,
+                "dropout_rate": 0.2
+            },
+            "avg_f1": 0.8309168702285618,
+            "std_f1": 0.003295795655984541,
+            "mean_acc": 0.8190815518606493,
+            "std_acc": 0.013094089792985927,
+            "f1_scores": [
+                0.8355737750056191,
+                0.8287567387599301,
+                0.8284200969201361
+            ],
+            "acc_scores": [
+                0.834916864608076,
+                0.8028503562945368,
+                0.819477434679335
+            ],
+            "memory_used_GB": 2.772164096,
+            "time_taken": 1539.7913665771484
+        },
+        {
+            "params": {
+                "model_name": "efficientnet_V2",
+                "learning_rate": 0.0001,
+                "batch_size": 16,
+                "weight_decay": 0,
+                "optimizer": "adamw",
+                "scheduler": true,
+                "dropout_rate": 0
+            },
+            "avg_f1": 0.8236856586194219,
+            "std_f1": 0.0034890557983229455,
+            "mean_acc": 0.8178939034045923,
+            "std_acc": 0.001119725702591528,
+            "f1_scores": [
+                0.8275136010573002,
+                0.8190753179775486,
+                0.824468056823417
+            ],
+            "acc_scores": [
+                0.817102137767221,
+                0.819477434679335,
+                0.817102137767221
+            ],
+            "memory_used_GB": 2.772164096,
+            "time_taken": 1533.2508416175842
+        },
+        {
+            "params": {
+                "model_name": "efficientnet_V2",
+                "learning_rate": 0.0001,
+                "batch_size": 16,
+                "weight_decay": 0,
+                "optimizer": "adamw",
+                "scheduler": true,
+                "dropout_rate": 0.2
+            },
+            "avg_f1": 0.8292908254932304,
+            "std_f1": 0.006745963870288059,
+            "mean_acc": 0.8131433095803642,
+            "std_acc": 0.01794183561935814,
+            "f1_scores": [
+                0.838151121284084,
+                0.8279239130903482,
+                0.8217974421052591
+            ],
+            "acc_scores": [
+                0.838479809976247,
+                0.8016627078384798,
+                0.7992874109263658
+            ],
+            "memory_used_GB": 2.772164096,
+            "time_taken": 1534.3114948272705
+        }
+    ]
+}
