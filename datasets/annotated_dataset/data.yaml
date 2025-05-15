@@ -1,0 +1,5 @@
+path: annotated_dataset
+train: images/train
+val: images/val
+nc: 2
+names: ['bird_head', 'bird_body']
