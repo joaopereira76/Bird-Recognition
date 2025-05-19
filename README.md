@@ -89,9 +89,9 @@ With this segmentation, 2 strategies were considered:
 
 | Metric             | Average (across 11 models) |
 |--------------------|----------------------------|
-| **Macro F1-score** |  0.8759                     |
-| **Accuracy**       |  0.8760                     |
-| **Macro-AUPRC**    |  0.9393                     |
+| **Macro F1-score** |  ~0.87                     |
+| **Accuracy**       |  ~0.88                    |
+| **Macro-AUPRC**    |  ~0.94                     |
 
 All results in the report
 
@@ -184,12 +184,11 @@ Even so, two datasets with several samples were obtained. Below is the distribut
 | ID  | Model                           | Input Type           | Description                      | Macro-F1 | Accuracy | Macro-AUPRC | Top-3 Acc | Notes           |
 |-----|----------------------------------|----------------------|----------------------------------|----------|----------|--------|-----------|------------------|
 | Base | EfficientNet-B0                  | Full Image           | Multiclass baseline              |    –     |    –     |   –    |     –     | Baseline         |
-| A   | EfficientNet-B0                  | Head Crop            | Multiclass trained on head crops |    –     |    –     |   –    |     –     |                  |
+| A   | EfficientNet-B0                  | Head Crop            | Multiclass trained on head crops |    ~0.86     |    ~0.87     |   ~0.93    |     ~0.97     |                  |
 | B   | EfficientNet-B0                  | Body Crop            | Multiclass trained on body crops |    ~0.85     |    ~0.86     |   ~0.92    |     ~0.96     |                  |
-| C   | EfficientNet-B0 (Segmented)           | 3 equal vertical crops  | Multiclass   |    –     |    –     |   –    |     –     | Using YOLO + SAM crops |
-| D   | EfficientNet-B0  (Segmented)           | 3 equal vertical crops, One Vs All  | Binary classifiers per species   |    –     |    –     |   –    |     –     | Using YOLO + SAM crops |
+| C   | EfficientNet-B0 (Segmented)           | 3 equal vertical crops  | Multiclass   |    ~0.74     |    ~0.75     |   ~0.83    |     ~0.91     | Using YOLO + SAM crops |
+| D   | EfficientNet-B0  (Segmented)           | 3 equal vertical crops, One Vs All  | Binary classifiers per species   |    ~0.87     |    ~0.88     |   ~0.94    |     –     | Using YOLO + SAM crops |
 | E   | Ensemble (full + head + body)    | Combined logits      | Fusion of A + B + Base           |    –     |    –     |   –    |     –     | Late fusion      |
-
 
 
 
