@@ -181,14 +181,14 @@ Even so, two datasets with several samples were obtained. Below is the distribut
 
 ## 📊 Model Comparison Scoreboard
 
-| ID  | Model                           | Input Type           | Description                      | Macro-F1 | Accuracy | AUPRC | Top-3 Acc | Notes           |
+| ID  | Model                           | Input Type           | Description                      | Macro-F1 | Accuracy | Macro-AUPRC | Top-3 Acc | Notes           |
 |-----|----------------------------------|----------------------|----------------------------------|----------|----------|--------|-----------|------------------|
 | Base | EfficientNet-B0                  | Full Image           | Multiclass baseline              |    –     |    –     |   –    |     –     | Baseline         |
 | A   | EfficientNet-B0                  | Head Crop            | Multiclass trained on head crops |    –     |    –     |   –    |     –     |                  |
-| B   | EfficientNet-B0                  | Body Crop            | Multiclass trained on body crops |    –     |    –     |   –    |     –     |                  |
-| C   | One-vs-All (Segmented)           | 3 equal vertical crops  | Binary classifiers per species   |    –     |    –     |   –    |     –     | Using YOLO crops |
-| C   | One-vs-All (Segmented)           | 3 equal vertical crops    | Binary classifiers per species   |    –     |    –     |   –    |     –     | Using YOLO crops |
-| D   | Ensemble (full + head + body)    | Combined logits      | Fusion of A + B + Base           |    –     |    –     |   –    |     –     | Late fusion      |
+| B   | EfficientNet-B0                  | Body Crop            | Multiclass trained on body crops |    ~0.85     |    ~0.86     |   ~0.92    |     ~0.96     |                  |
+| C   | EfficientNet-B0 (Segmented)           | 3 equal vertical crops  | Multiclass   |    –     |    –     |   –    |     –     | Using YOLO + SAM crops |
+| D   | EfficientNet-B0  (Segmented)           | 3 equal vertical crops, One Vs All  | Binary classifiers per species   |    –     |    –     |   –    |     –     | Using YOLO + SAM crops |
+| E   | Ensemble (full + head + body)    | Combined logits      | Fusion of A + B + Base           |    –     |    –     |   –    |     –     | Late fusion      |
 
 
 
