@@ -179,6 +179,17 @@ Even so, two datasets with several samples were obtained. Below is the distribut
 
 ![confusion_matrix_body](https://github.com/user-attachments/assets/d60057b8-d988-425b-8b61-cd3f30c8b5b6)
 
+## 📊 Model Comparison Scoreboard
+
+| ID  | Model                        | Input Type           | Description               | Macro-F1 | Accuracy | AUPRC | Top-3 Acc | Notes     |
+| Base | EfficientNet-B0              | Full Image           | Multiclass baseline       |   –      | |  –    |     –     | Baseline |
+| A   | EfficientNet-B0              | Head Crop            | Multiclass on head only   |   –      | |   –    |     –     |           |
+| B   | EfficientNet-B0              | Body Crop            | Multiclass on body only   |   –      | |   –    |     –     |           |
+| C   | One-vs-All EfficientNet-B0      | 3 equal vertical crops (SAM + YOLO)            | Binary classifiers        |   –      | |   –    |     –     | Per species |
+| E   | EfficientNet-B0                 | 3 equal vertical crops (SAM + YOLO) | Multiclass      |   –      | !   –    |     –     |  |
+| F   | Ensemble | Combined logits      | Fusion of 3 models        |   (soon)     | (soon) |  (soon)   |    (soon)    | Late fusion |
+
+
 
 ## ⚙️ Training Environment
 
