@@ -157,6 +157,10 @@ Even so, two datasets with several samples were obtained. Below is the distribut
 
 ![confusion_matrix_head](https://github.com/user-attachments/assets/e56de7af-b4b9-4362-8d34-74a79700f45e)
 
+Grad-CAM Results:
+![gradcam_head_1](https://github.com/user-attachments/assets/117b4951-e239-4a8b-94b7-23b6d7563539)
+![gradcam_head_2](https://github.com/user-attachments/assets/38e14649-0449-47e4-961a-7f033e0aa09d)
+
 
 ### 🐦‍⬛ Body Multiclass Classification Results
 
@@ -173,17 +177,22 @@ Even so, two datasets with several samples were obtained. Below is the distribut
 | Metric             | Value   |
 |--------------------|---------|
 | **Macro F1-score** | ~0.85   |
-| **Accuracy**       | ~0.86   |
+| **Accuracy**       | ~0.85   |
 | **Macro-AUPRC**    | ~0.92   |
-| **Top-3 Accuracy** | ~0.96   |
+| **Top-3 Accuracy** | ~0.95   |
 
-![confusion_matrix_body](https://github.com/user-attachments/assets/d60057b8-d988-425b-8b61-cd3f30c8b5b6)
+![confusion_matrix_body](https://github.com/user-attachments/assets/0004fd7a-cc87-4ab5-a2ab-bd72f3743c25)
+
+Grad-CAM Results:
+![gradcam_body_1](https://github.com/user-attachments/assets/23b542d0-acd4-45ee-9ee2-9f9f4a457341)
+![gradcam_body_2](https://github.com/user-attachments/assets/619c6bda-7997-4705-8f7a-5e302d84eea5)
+
 
 ## 📊 Model Comparison Scoreboard
 
 | ID  | Model                           | Input Type           | Description                      | Macro-F1 | Accuracy | Macro-AUPRC | Top-3 Acc | Notes           |
 |-----|----------------------------------|----------------------|----------------------------------|----------|----------|--------|-----------|------------------|
-| Base | EfficientNet-B0                  | Full Image           | Multiclass baseline              |    –     |    –     |   –    |     –     | Baseline         |
+| Base | EfficientNet-B0                  | Full Image           | Multiclass baseline              |    ~0.81     |    ~0.81     |   ~0.98    |     ~0.95     | Baseline         |
 | A   | EfficientNet-B0                  | Head Crop            | Multiclass trained on head crops |    ~0.86     |    ~0.87     |   ~0.93    |     ~0.97     |                  |
 | B   | EfficientNet-B0                  | Body Crop            | Multiclass trained on body crops |    ~0.85     |    ~0.86     |   ~0.92    |     ~0.96     |                  |
 | C   | EfficientNet-B0 (Segmented)           | 3 equal vertical crops  | Multiclass   |    ~0.74     |    ~0.75     |   ~0.83    |     ~0.91     | Using YOLO + SAM crops |
