@@ -24,4 +24,4 @@ ebird-api>=1.1.1
 imagehash>=4.2.1
 
 # Utility
-pathlib2>=2.3.0; python_version < '3.4'
+pathlib2>=2.3.0;
