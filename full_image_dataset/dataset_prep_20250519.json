@@ -1,0 +1,110 @@
+{
+  "config": {
+    "IMG_SIZE": [
+      224,
+      224
+    ],
+    "TEST_SIZE": 0.15,
+    "TRAIN_SIZE": 0.7,
+    "VAL_SIZE": 0.15,
+    "N_SPLITS": 5,
+    "COMPRESSION": "gzip",
+    "COMPRESSION_LEVEL": 6,
+    "SAVE_AS_JPEG": true,
+    "JPEG_QUALITY": 80,
+    "AUGMENTATION": {
+      "train": [
+        {
+          "name": "RandomResizedCrop",
+          "size": [
+            224,
+            224
+          ],
+          "scale": [
+            0.8,
+            1.0
+          ]
+        },
+        {
+          "name": "HorizontalFlip",
+          "p": 0.5
+        },
+        {
+          "name": "ShiftScaleRotate",
+          "shift_limit": 0.05,
+          "scale_limit": 0.1,
+          "rotate_limit": 20,
+          "p": 0.7
+        },
+        {
+          "name": "ColorJitter",
+          "brightness": 0.1,
+          "contrast": 0.1,
+          "saturation": 0.1,
+          "hue": 0.05,
+          "p": 0.8
+        },
+        {
+          "name": "CoarseDropout",
+          "max_holes": 1,
+          "max_height": 48,
+          "max_width": 48,
+          "p": 0.4
+        }
+      ]
+    }
+  },
+  "system": {
+    "timestamp": "2025-05-19T21:49:11.487790",
+    "os": "Linux",
+    "os_version": "6.8.0-59-generic",
+    "cpu": "x86_64",
+    "cpu_cores": 6,
+    "ram_total_gb": 15.46,
+    "ram_available_gb": 6.19,
+    "python_version": "3.13.2"
+  },
+  "download": {},
+  "cleaning": {
+    "Turdus merula": {
+      "species": "Turdus merula",
+      "total_removed": 2,
+      "remaining_images": 598,
+      "time_seconds": 2.286216974258423,
+      "timestamp": "2025-05-19T21:50:55.271236"
+    }
+  },
+  "augmentation": {
+    "Turdus merula": {
+      "species": "Turdus merula",
+      "original_count": 600,
+      "augmented_saved": 600,
+      "start_time": "20250519_215045",
+      "end_time": "2025-05-19T21:50:52.984521",
+      "time_seconds": 7.518912315368652
+    }
+  },
+  "dataset_stats": {
+    "total_images": 6598,
+    "species_counts": {
+      "Carduelis carduelis": 600,
+      "Ciconia ciconia": 600,
+      "Columba livia": 600,
+      "Delichon urbicum": 600,
+      "Emberiza calandra": 600,
+      "Hirundo rustica": 600,
+      "Passer domesticus": 600,
+      "Serinus serinus": 600,
+      "Streptopelia decaocto": 600,
+      "Sturnus unicolor": 600,
+      "Turdus merula": 598
+    },
+    "h5_path": "full_image_dataset/dataset_20250519.h5",
+    "csv_path": "full_image_dataset/dataset_metadata_20250519.csv",
+    "train_samples": 5608,
+    "test_samples": 990,
+    "processing_time_seconds": 181.85269260406494,
+    "timestamp": "20250519"
+  },
+  "processing_times": {}
+}
