@@ -1,0 +1,110 @@
+{
+  "config": {
+    "IMG_SIZE": [
+      224,
+      224
+    ],
+    "TEST_SIZE": 0.15,
+    "TRAIN_SIZE": 0.7,
+    "VAL_SIZE": 0.15,
+    "N_SPLITS": 5,
+    "COMPRESSION": "gzip",
+    "COMPRESSION_LEVEL": 6,
+    "SAVE_AS_JPEG": true,
+    "JPEG_QUALITY": 80,
+    "AUGMENTATION": {
+      "train": [
+        {
+          "name": "RandomResizedCrop",
+          "size": [
+            224,
+            224
+          ],
+          "scale": [
+            0.8,
+            1.0
+          ]
+        },
+        {
+          "name": "HorizontalFlip",
+          "p": 0.5
+        },
+        {
+          "name": "ShiftScaleRotate",
+          "shift_limit": 0.05,
+          "scale_limit": 0.1,
+          "rotate_limit": 20,
+          "p": 0.7
+        },
+        {
+          "name": "ColorJitter",
+          "brightness": 0.1,
+          "contrast": 0.1,
+          "saturation": 0.1,
+          "hue": 0.05,
+          "p": 0.8
+        },
+        {
+          "name": "CoarseDropout",
+          "max_holes": 1,
+          "max_height": 48,
+          "max_width": 48,
+          "p": 0.4
+        }
+      ]
+    }
+  },
+  "system": {
+    "timestamp": "2025-05-23T03:17:54.931105",
+    "os": "Windows",
+    "os_version": "11",
+    "cpu": "AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD",
+    "cpu_cores": 8,
+    "ram_total_gb": 15.88,
+    "ram_available_gb": 8.85,
+    "python_version": "3.12.4"
+  },
+  "download": {},
+  "cleaning": {
+    "Turdus merula": {
+      "removed": 2,
+      "remaining": 594,
+      "duplicates": 2,
+      "invalid": 0,
+      "time_seconds": 0.9918909072875977,
+      "timestamp": "20250523_031858"
+    }
+  },
+  "dataset_stats": {
+    "total_images": 6583,
+    "species_counts": {
+      "Carduelis carduelis": 600,
+      "Ciconia ciconia": 600,
+      "Columba livia": 600,
+      "Delichon urbicum": 594,
+      "Emberiza calandra": 598,
+      "Hirundo rustica": 599,
+      "Passer domesticus": 600,
+      "Serinus serinus": 599,
+      "Streptopelia decaocto": 600,
+      "Sturnus unicolor": 599,
+      "Turdus merula": 594
+    },
+    "h5_path": "full_image_dataset\\dataset_20250523.h5",
+    "csv_path": "full_image_dataset\\dataset_metadata_20250523.csv",
+    "train_samples": 5595,
+    "test_samples": 988,
+    "processing_time_seconds": 146.98359751701355,
+    "timestamp": "20250523"
+  },
+  "augmentation": {
+    "Turdus merula": {
+      "species": "Turdus merula",
+      "original_count": 569,
+      "augmented_saved": 569,
+      "start_time": "20250523_031853",
+      "end_time": "2025-05-23T03:18:57.958926",
+      "time_seconds": 4.567112922668457
+    }
+  }
+}

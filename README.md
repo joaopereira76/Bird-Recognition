@@ -192,7 +192,7 @@ Grad-CAM Results:
 
 | ID  | Model                           | Input Type           | Description                      | Macro-F1 | Accuracy | Macro-AUPRC | Top-3 Acc | Notes           |
 |-----|----------------------------------|----------------------|----------------------------------|----------|----------|--------|-----------|------------------|
-| Base | EfficientNet-B0                  | Full Image           | Multiclass baseline              |    ~0.81     |    ~0.81     |   ~0.98    |     ~0.95     | Baseline         |
+| Base | EfficientNet-V2-s                  | Full Image           | Multiclass baseline              |    ~0.89     |    ~0.89     |   ~0.98    |     ~0.96     | Baseline         |
 | A   | EfficientNet-B0                  | Head Crop            | Multiclass trained on head crops |    ~0.86     |    ~0.87     |   ~0.93    |     ~0.97     |                  |
 | B   | EfficientNet-B0                  | Body Crop            | Multiclass trained on body crops |    ~0.85     |    ~0.86     |   ~0.92    |     ~0.96     |                  |
 | C   | EfficientNet-B0 (Segmented)           | 3 equal vertical crops  | Multiclass   |    ~0.74     |    ~0.75     |   ~0.83    |     ~0.91     | Using YOLO + SAM crops |
