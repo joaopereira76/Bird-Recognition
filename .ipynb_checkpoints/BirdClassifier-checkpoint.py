@@ -3,10 +3,15 @@ import torch.nn.functional as F
 import numpy as np
 from torchvision import transforms
 from PIL import Image
+from ultralytics import YOLO
+from torchvision import models
+import torch.nn as nn
+
 
 class BirdClassifierEnsemble:
     def __init__(self):
-        self.device = device or ('cuda' if torch.cuda.is_available() else 'cpu')
+        self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
+        print(self.device)
         self.species_list = [
             'Ciconia_ciconia', 'Columba_livia', 'Streptopelia_decaocto',
             'Emberiza_calandra', 'Carduelis_carduelis', 'Serinus_serinus',
@@ -14,20 +19,30 @@ class BirdClassifierEnsemble:
             'Sturnus_unicolor', 'Turdus_merula'
         ]
 
+        self.yolo_model = YOLO('runs/detect/train/weights/best.pt')  
 
         binary_models = [ "saved_models//model_segemented_binary_"+specie for specie in self.species_list]
         
         self.num_classes = len(self.species_list)
 
-        self.multiclass_model = self._load_model(multiclass_model)
-        
-        self.head_model = self._load_model(head_model)
-        self.body_model = self._load_model(body_model)
+        self.multiclass_model = models.efficientnet_v2_s(weights=None)
+        self.multiclass_model.classifier[1] = nn.Sequential(
+            nn.Dropout(0),
+            nn.Linear(self.multiclass_model.classifier[1].in_features, 11)
+        )
+        self.multiclass_model.load_state_dict(torch.load("saved_models//full_image_model//final_model_20250524.pth", map_location='cuda')["model_state_dict"])
+        self.multiclass_model.eval()
 
-        
+        self.head_model = models.efficientnet_b0(weights=None)
+        self.head_model.classifier[1] = torch.nn.Linear(self.head_model.classifier[1].in_features, 11)
+        self.head_model.load_state_dict(torch.load("saved_models//best_bird_head_model_11classes.pth", map_location='cuda'))
+        self.head_model.eval()
 
-        self.onevsall_segmented_model = self._load_binary_models(binary_models)
-        self.segmented_model = self._load_model(multiclass_model)
+        self.body_model = models.efficientnet_b0(weights=None)
+        self.body_model.classifier[1] = torch.nn.Linear(self.body_model.classifier[1].in_features, 11)
+        self.body_model.load_state_dict(torch.load("saved_models//best_bird_body_model_11classes.pth", map_location='cuda'))
+        self.body_model.eval()
+
 
         self.transform = transforms.Compose([
             transforms.Resize((224, 224)),
@@ -36,22 +51,6 @@ class BirdClassifierEnsemble:
                                  std=[0.229, 0.224, 0.225])
         ])
 
-    def _load_model(self, model_path):
-        if model_path is None:
-            return None
-        model = torch.load(model_path, map_location=self.device)
-        model.eval()
-        return model
-
-    def _load_binary_models(self, models_dict):
-        loaded = {}
-        if not models_dict:
-            return loaded
-        for species, path in models_dict.items():
-            model = torch.load(path, map_location=self.device)
-            model.eval()
-            loaded[species] = model
-        return loaded
 
     def _prepare_image(self, image):
         if isinstance(image, str):
@@ -59,61 +58,85 @@ class BirdClassifierEnsemble:
         return self.transform(image).unsqueeze(0).to(self.device)
 
     def predict_multiclass(self, model, image_tensor):
+        model = model.to(image_tensor.device)
         with torch.no_grad():
+            
             logits = model(image_tensor)
             probs = F.softmax(logits, dim=1)
         return probs
 
-    def predict_binary(self, image_tensor, model_dict):
-        probs = []
-        with torch.no_grad():
-            for species, model in model_dict.items():
-                out = model(image_tensor)
-                prob = torch.sigmoid(out).item()
-                probs.append(prob)
-        return torch.tensor(probs).unsqueeze(0).to(self.device)
-
-    def classify(self, image, method='vote'):
-        img_tensor = self._prepare_image(image)
-        results = {}
-
+    
+    def classify(self, image_path, method='vote', top_k=3):
+        if isinstance(image_path, str):
+            image = Image.open(image_path).convert("RGB")
+        else:
+            image = image_path
+    
+        # Head and Body detection and crop
+        results = self.yolo_model(image)
+        image_np = np.array(image)
+    
+        head_crop = None
+        body_crop = None
+    
+        for result in results[0].boxes.data.cpu().numpy():
+            x1, y1, x2, y2, conf, cls = result
+            part_class = int(cls)
+            part_img = image_np[int(y1):int(y2), int(x1):int(x2)]
+    
+            if part_class == 0:  # 0 = head
+                head_crop = part_img
+            elif part_class == 1:  # 1 = body
+                body_crop = part_img
+    
+        preds = {}
+    
+        if head_crop is not None and self.head_model:
+            head_tensor = self._prepare_image(Image.fromarray(head_crop)).to(self.device)
+            preds['head'] = self.predict_multiclass(self.head_model, head_tensor)
+    
+        if body_crop is not None and self.body_model:
+            body_tensor = self._prepare_image(Image.fromarray(body_crop)).to(self.device)
+            preds['body'] = self.predict_multiclass(self.body_model, body_tensor)
+    
         if self.multiclass_model:
-            results['multiclass'] = self.predict_multiclass(self.multiclass_model, img_tensor)
-        if self.head_model:
-            results['head'] = self.predict_multiclass(self.head_model, img_tensor)
-        if self.body_model:
-            results['body'] = self.predict_multiclass(self.body_model, img_tensor)
-        if self.binary_head_models:
-            results['binary_head'] = self.predict_binary(img_tensor, self.binary_head_models)
-        if self.binary_body_models:
-            results['binary_body'] = self.predict_binary(img_tensor, self.binary_body_models)
-
+            img_tensor = self._prepare_image(image).to(self.device)
+            preds['multiclass'] = self.predict_multiclass(self.multiclass_model, img_tensor)
+    
+        if not preds:
+            raise ValueError("No parts detected or models missing.")
+    
+        # Aggregate probabilities using chosen method
         if method == 'vote':
-            return self._vote(results)
+            combined = self._vote_probs(preds)
         elif method == 'mean':
-            return self._mean(results)
+            combined = self._mean_probs(preds)
         elif method == 'max':
-            return self._max(results)
+            combined = self._max_probs(preds)
         else:
             raise ValueError(f"Unknown method: {method}")
+    
+        # Extract top-k
+        top_probs, top_indices = torch.topk(combined, top_k)
+        top_classes = [self.species_list[i] for i in top_indices[0].tolist()]
+        top_probs = top_probs[0].tolist()
+    
+        return list(zip(top_classes, top_probs))
 
-    def _vote(self, results):
-        votes = torch.zeros(self.num_classes)
-        for _, probs in results.items():
+
+    def _vote_probs(self, results):
+        counts = torch.zeros((1, self.num_classes), device=self.device)
+        for probs in results.values():
             pred = torch.argmax(F.pad(probs, (0, self.num_classes - probs.shape[1])))
-            votes[pred] += 1
-        final_pred = torch.argmax(votes).item()
-        return self.species_list[final_pred]
-
-    def _mean(self, results):
-        total = torch.zeros((1, self.num_classes))
+            counts[0, pred] += 1
+        return counts / counts.sum()
+    
+    def _mean_probs(self, results):
+        total = torch.zeros((1, self.num_classes), device=self.device)
         for probs in results.values():
             total += F.pad(probs, (0, self.num_classes - probs.shape[1]))
-        final_pred = torch.argmax(total, dim=1).item()
-        return self.species_list[final_pred]
-
-    def _max(self, results):
+        return total / len(results)
+    
+    def _max_probs(self, results):
         stacked = torch.stack([F.pad(p, (0, self.num_classes - p.shape[1])) for p in results.values()])
-        max_probs, _ = torch.max(stacked, dim=0)
-        final_pred = torch.argmax(max_probs, dim=1).item()
-        return self.species_list[final_pred]
+        return torch.max(stacked, dim=0, keepdim=True).values
