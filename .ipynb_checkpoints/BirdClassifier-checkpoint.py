@@ -25,13 +25,15 @@ class BirdClassifierEnsemble:
         
         self.num_classes = len(self.species_list)
 
-        self.multiclass_model = models.efficientnet_v2_s(weights=None)
+        self.multiclass_model = models.efficientnet_v2_s(weights=models.EfficientNet_V2_S_Weights.DEFAULT)
         self.multiclass_model.classifier[1] = nn.Sequential(
             nn.Dropout(0),
             nn.Linear(self.multiclass_model.classifier[1].in_features, 11)
         )
-        self.multiclass_model.load_state_dict(torch.load("saved_models//full_image_model//final_model_20250524.pth", map_location='cuda')["model_state_dict"])
+        self.multiclass_model.load_state_dict(torch.load("saved_models//full_image_model//final_model_20250507.pth", map_location='cuda')["model_state_dict"])
+        print(self.multiclass_model)
         self.multiclass_model.eval()
+
 
         self.head_model = models.efficientnet_b0(weights=None)
         self.head_model.classifier[1] = torch.nn.Linear(self.head_model.classifier[1].in_features, 11)
@@ -90,7 +92,8 @@ class BirdClassifierEnsemble:
                 body_crop = part_img
     
         preds = {}
-    
+
+        
         if head_crop is not None and self.head_model:
             head_tensor = self._prepare_image(Image.fromarray(head_crop)).to(self.device)
             preds['head'] = self.predict_multiclass(self.head_model, head_tensor)
@@ -102,9 +105,12 @@ class BirdClassifierEnsemble:
         if self.multiclass_model:
             img_tensor = self._prepare_image(image).to(self.device)
             preds['multiclass'] = self.predict_multiclass(self.multiclass_model, img_tensor)
-    
+
+        print(preds)
+        
         if not preds:
-            raise ValueError("No parts detected or models missing.")
+            print("Classification error")
+            return None
     
         # Aggregate probabilities using chosen method
         if method == 'vote':
@@ -115,14 +121,17 @@ class BirdClassifierEnsemble:
             combined = self._max_probs(preds)
         else:
             raise ValueError(f"Unknown method: {method}")
-    
-        # Extract top-k
-        top_probs, top_indices = torch.topk(combined, top_k)
-        top_classes = [self.species_list[i] for i in top_indices[0].tolist()]
-        top_probs = top_probs[0].tolist()
-    
-        return list(zip(top_classes, top_probs))
 
+        if top_k:
+            # Extract top-k
+            top_probs, top_indices = torch.topk(combined, top_k)
+            top_classes = [self.species_list[i] for i in top_indices[0].tolist()]
+            top_probs = top_probs[0].tolist()
+            return list(zip(top_classes, top_probs))
+        else:
+            return combined
+        
+    
 
     def _vote_probs(self, results):
         counts = torch.zeros((1, self.num_classes), device=self.device)
