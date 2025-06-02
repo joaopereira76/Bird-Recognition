@@ -192,7 +192,7 @@ Grad-CAM Results:
 
 | ID  | Model                           | Input Type           | Description                      | Macro-F1 | Accuracy | Macro-AUPRC | Top-3 Acc | Notes           |
 |-----|----------------------------------|----------------------|----------------------------------|----------|----------|--------|-----------|------------------|
-| Base | EfficientNet-V2-s                  | Full Image           | Multiclass baseline              |    ~0.89     |    ~0.89     |   ~0.98    |     ~0.96     | Baseline         |
+| Base | EfficientNet-V2-s                  | Full Image           | Multiclass baseline              |    ~0.80     |    ~0.80     |   ~0.98    |     ~0.95     | Baseline         |
 | A   | EfficientNet-B0                  | Head Crop            | Multiclass trained on head crops |    ~0.86     |    ~0.87     |   ~0.93    |     ~0.97     |                  |
 | B   | EfficientNet-B0                  | Body Crop            | Multiclass trained on body crops |    ~0.85     |    ~0.86     |   ~0.92    |     ~0.96     |                  |
 | C   | EfficientNet-B0 (Segmented)           | 3 equal vertical crops  | Multiclass   |    ~0.74     |    ~0.75     |   ~0.83    |     ~0.91     | Using YOLO + SAM crops |
@@ -209,10 +209,8 @@ Grad-CAM Results:
 
 ## References
 1. [Merlin Bird ID](https://merlin.allaboutbirds.org/photo-id/)
-2. [eBird](https://ebird.org/about/ebird-mobile/)
-3. [Wilder - Common Birds in Portugal](https://wilder.pt/primavera/estas-10-aves-estao-entre-as-mais-visas-e-ouvidas-na-primavera)
-4. [ResNet](https://pytorch.org/hub/pytorch_vision_resnet/)
-5. [EfficientNet](https://pytorch.org/vision/main/models/efficientnet.html)
+2. [Wilder - Common Birds in Portugal](https://wilder.pt/primavera/estas-10-aves-estao-entre-as-mais-visas-e-ouvidas-na-primavera)
+3. [EfficientNet](https://pytorch.org/vision/main/models/efficientnet.html)
 
 ## Contacts
 - Duarte Gonçalves (duarte.dapg@gmail.com)
