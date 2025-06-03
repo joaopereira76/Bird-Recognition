@@ -1,0 +1,58 @@
+{
+  "config": {
+    "IMG_SIZE": [
+      224,
+      224
+    ],
+    "TEST_SIZE": 0.15,
+    "TRAIN_SIZE": 0.7,
+    "VAL_SIZE": 0.15,
+    "N_SPLITS": 5,
+    "COMPRESSION": "gzip",
+    "COMPRESSION_LEVEL": 6
+  },
+  "system": {
+    "timestamp": "2025-06-03T19:35:14.973957",
+    "os": "Windows",
+    "os_version": "11",
+    "cpu": "AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD",
+    "cpu_cores": 8,
+    "ram_total_gb": 15.88,
+    "ram_available_gb": 4.86,
+    "python_version": "3.12.4"
+  },
+  "download": {},
+  "cleaning": {
+    "Turdus merula": {
+      "removed": 0,
+      "remaining": 513,
+      "duplicates": 0,
+      "invalid": 0,
+      "time_seconds": 6.968270540237427,
+      "timestamp": "20250603_193628"
+    }
+  },
+  "dataset_stats": {
+    "total_images": 6240,
+    "species_counts": {
+      "Carduelis carduelis": 589,
+      "Ciconia ciconia": 591,
+      "Columba livia": 589,
+      "Delichon urbicum": 558,
+      "Emberiza calandra": 582,
+      "Hirundo rustica": 557,
+      "Passer domesticus": 559,
+      "Serinus serinus": 573,
+      "Streptopelia decaocto": 579,
+      "Sturnus unicolor": 550,
+      "Turdus merula": 513
+    },
+    "h5_path": "full_image_dataset\\dataset_20250603.h5",
+    "train_samples": 4368,
+    "test_samples": 936,
+    "compression": "gzip",
+    "compression_level": 6,
+    "processing_time_seconds": 313.6738703250885,
+    "timestamp": "20250603"
+  }
+}
