@@ -27,11 +27,10 @@ class BirdClassifierEnsemble:
 
         self.multiclass_model = models.efficientnet_v2_s(weights=models.EfficientNet_V2_S_Weights.DEFAULT)
         self.multiclass_model.classifier[1] = nn.Sequential(
-            nn.Dropout(0),
+            nn.Dropout(0.2),
             nn.Linear(self.multiclass_model.classifier[1].in_features, 11)
         )
         self.multiclass_model.load_state_dict(torch.load("saved_models//full_image_model//final_model_20250507.pth", map_location='cuda')["model_state_dict"])
-        print(self.multiclass_model)
         self.multiclass_model.eval()
 
 
