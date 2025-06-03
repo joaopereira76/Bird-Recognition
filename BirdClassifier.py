@@ -30,7 +30,7 @@ class BirdClassifierEnsemble:
             nn.Dropout(0.2),
             nn.Linear(self.multiclass_model.classifier[1].in_features, 11)
         )
-        self.multiclass_model.load_state_dict(torch.load("saved_models//full_image_model//final_model_20250507.pth", map_location='cuda')["model_state_dict"])
+        self.multiclass_model.load_state_dict(torch.load("saved_models//full_image_model//final_model_20250603.pth")["model_state_dict"])
         self.multiclass_model.eval()
 
 
