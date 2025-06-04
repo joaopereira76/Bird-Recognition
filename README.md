@@ -1,3 +1,16 @@
+# Organization overview
+
+Images/ - Images saved to use on report <br>
+datasets/ - Bird images used on the datasets <br>
+runs/ - Created automatically by the YOLO training process <br>
+saved_models/ - Trained models and some results <br>
+BirdClassifier.py - File created to make it easier to call a classifier from the command line <br>
+Segmented_and_Part_Approach.ipynb - Code report with the steps for the segmented and part approach <br>
+bird-recogn.ipynb and bird-recogn2.ipynb - Files used for code testing (not important) <br>
+full_image_dataset_prep.ipynb - Code to pre process the dataset for full image approach
+full_image_training.ipynb - Code to train the full image approach model
+
+
 # Bird-Recognition - Specie Identification of the Most Common Birds in Portugal
 
 ## Project Description
@@ -27,6 +40,29 @@ This project aims to develop a deep learning model capable of accurately identif
 ## Evaluation Metrics
 - **Quantitative**: Accuracy, Macro F1 score, Top-3 acc, Macro-AUPRC, ROC Curve
 - **Qualitative**: Visual inspection of predictions and confusion matrices to identify misclassifications.
+
+## 🖼️ Results Summary - Full Image Approach
+
+The full image approach consists of training a convolutional neural network to classify bird species directly from uncropped, unsegmented images. The method assumes that the full context of the bird and its background can provide enough information for accurate classification. 
+
+
+| Config             | Value   |
+|--------------------|---------|
+| **learning_rate**  | 0.0001   |
+| **batch_size**     | 32      |
+| **optimizer**      | adamw    |
+| **weight_decay**   | 0.0001  |
+| **dropout_rate**   | 0     |
+| **model**          | efficientNet-V2-S  |
+
+| Metric             | Value   |
+|--------------------|---------|
+| **Macro F1-score** | ~0.83   |
+| **Accuracy**       | ~0.83   |
+| **Macro-AUPRC**    | ~0.98   |
+| **Top-3 Accuracy** | ~0.95   |
+
+
 
 ## 🧪 Results Summary - Segmented Approach
 
