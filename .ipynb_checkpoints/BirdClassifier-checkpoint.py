@@ -33,6 +33,18 @@ class BirdClassifierEnsemble:
         self.multiclass_model.load_state_dict(torch.load("saved_models//full_image_model//final_model_20250603.pth")["model_state_dict"])
         self.multiclass_model.eval()
 
+        self.multiclass_model_output_transform = {0:4,
+                                            1:0,
+                                            2:1,
+                                            3:6,
+                                            4:3,
+                                            5:7,
+                                            6:8,
+                                            7:5,
+                                            8:2,
+                                            9:9,
+                                            10:10}
+
 
         self.head_model = models.efficientnet_b0(weights=None)
         self.head_model.classifier[1] = torch.nn.Linear(self.head_model.classifier[1].in_features, 11)
@@ -104,6 +116,8 @@ class BirdClassifierEnsemble:
         if self.multiclass_model:
             img_tensor = self._prepare_image(image).to(self.device)
             preds['multiclass'] = self.predict_multiclass(self.multiclass_model, img_tensor)
+            index_mapping = [k for k, _ in sorted(self.multiclass_model_output_transform.items(), key=lambda x: x[1])]
+            preds['multiclass'] = preds['multiclass'][:, index_mapping]
 
         print(preds)
         
