@@ -6,6 +6,9 @@ from PIL import Image
 from ultralytics import YOLO
 from torchvision import models
 import torch.nn as nn
+import sys
+
+
 
 
 class BirdClassifierEnsemble:
@@ -162,3 +165,9 @@ class BirdClassifierEnsemble:
     def _max_probs(self, results):
         stacked = torch.stack([F.pad(p, (0, self.num_classes - p.shape[1])) for p in results.values()])
         return torch.max(stacked, dim=0, keepdim=True).values
+
+if __name__ == "__main__":
+    image_path = sys.argv[1]
+    classifier = BirdClassifierEnsemble()
+    result = classifier.classify(image_path)
+    print(result)
