@@ -197,7 +197,7 @@ Grad-CAM Results:
 | B   | EfficientNet-B0                  | Body Crop            | Multiclass trained on body crops |    ~0.85     |    ~0.86     |   ~0.92    |     ~0.96     |                  |
 | C   | EfficientNet-B0 (Segmented)           | 3 equal vertical crops  | Multiclass   |    ~0.74     |    ~0.75     |   ~0.83    |     ~0.91     | Using YOLO + SAM crops |
 | D   | EfficientNet-B0  (Segmented)           | 3 equal vertical crops, One Vs All  | Binary classifiers per species   |    ~0.87     |    ~0.88     |   ~0.94    |     –     | Using YOLO + SAM crops |
-| E   | Ensemble (full + head + body)    | Combined logits      | Fusion of A + B + Base           |    –     |    –     |   –    |     –     | Late fusion      |
+| E   | Ensemble (full + head + body)    | Combined logits      | Fusion of A + B + Base           |    ~0.92     |    ~0.92     |   ~0.96    |     ~0.98     | Late fusion      |
 
 
 
