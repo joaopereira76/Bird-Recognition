@@ -247,6 +247,9 @@ Grad-CAM Results:
 1. [Merlin Bird ID](https://merlin.allaboutbirds.org/photo-id/)
 2. [Wilder - Common Birds in Portugal](https://wilder.pt/primavera/estas-10-aves-estao-entre-as-mais-visas-e-ouvidas-na-primavera)
 3. [EfficientNet](https://pytorch.org/vision/main/models/efficientnet.html)
+4. [YOLO](https://yolov8.com/)
+5. [INaturalist](https://www.inaturalist.org/)
+6. [GBIF](https://www.gbif.org/)
 
 ## Contacts
 - Duarte Gonçalves (duarte.dapg@gmail.com)
