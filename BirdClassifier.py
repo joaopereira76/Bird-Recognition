@@ -14,7 +14,6 @@ import sys
 class BirdClassifierEnsemble:
     def __init__(self):
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
-        print(self.device)
         self.species_list = [
             'Ciconia_ciconia', 'Columba_livia', 'Streptopelia_decaocto',
             'Emberiza_calandra', 'Carduelis_carduelis', 'Serinus_serinus',
@@ -33,7 +32,7 @@ class BirdClassifierEnsemble:
             nn.Dropout(0.2),
             nn.Linear(self.multiclass_model.classifier[1].in_features, 11)
         )
-        self.multiclass_model.load_state_dict(torch.load("saved_models//full_image_model//final_model_20250603.pth")["model_state_dict"])
+        self.multiclass_model.load_state_dict(torch.load("saved_models//full_image_model//final_model_20250603.pth", map_location=self.device)["model_state_dict"])
         self.multiclass_model.eval()
 
         self.multiclass_model_output_transform = {0:4,
@@ -51,12 +50,12 @@ class BirdClassifierEnsemble:
 
         self.head_model = models.efficientnet_b0(weights=None)
         self.head_model.classifier[1] = torch.nn.Linear(self.head_model.classifier[1].in_features, 11)
-        self.head_model.load_state_dict(torch.load("saved_models//best_bird_head_model_11classes.pth", map_location='cuda'))
+        self.head_model.load_state_dict(torch.load("saved_models//parts//best_bird_head_model_11classes.pth", map_location=self.device))
         self.head_model.eval()
 
         self.body_model = models.efficientnet_b0(weights=None)
         self.body_model.classifier[1] = torch.nn.Linear(self.body_model.classifier[1].in_features, 11)
-        self.body_model.load_state_dict(torch.load("saved_models//best_bird_body_model_11classes.pth", map_location='cuda'))
+        self.body_model.load_state_dict(torch.load("saved_models//parts//best_bird_body_model_11classes.pth", map_location=self.device))
         self.body_model.eval()
 
 
@@ -122,7 +121,6 @@ class BirdClassifierEnsemble:
             index_mapping = [k for k, _ in sorted(self.multiclass_model_output_transform.items(), key=lambda x: x[1])]
             preds['multiclass'] = preds['multiclass'][:, index_mapping]
 
-        print(preds)
         
         if not preds:
             print("Classification error")
