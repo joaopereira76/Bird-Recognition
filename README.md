@@ -10,6 +10,13 @@ bird-recogn.ipynb and bird-recogn2.ipynb - Files used for code testing (not impo
 full_image_dataset_prep.ipynb - Code to pre process the dataset for full image approach
 full_image_training.ipynb - Code to train the full image approach model
 
+# How to use?
+On command line:
+```
+python BirdClassifier.py (image path)
+```
+
+The result is the top 3 most probable species, with the respective probability.
 
 # Bird-Recognition - Specie Identification of the Most Common Birds in Portugal
 
